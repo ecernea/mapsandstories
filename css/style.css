@@ -2,6 +2,10 @@ body {
     background-color: #e4e8e6;
     font-family: "Karla", sans-serif;
     font-size: 16px;
+    max-width: 80%;
+    align-content: center;
+    justify-content: center;
+    padding: 0 10%;
 }
 
 figure {
@@ -16,7 +20,7 @@ img {
 }
 
 ul {
-	padding: 0;
+    padding: 0;
     list-style: none;
 }
 
@@ -31,51 +35,49 @@ a:hover {
     text-decoration: none;
 }
 
-
-.wrapper {
+.head-wrapper {
     display: grid;
-    max-width: 80%;
     grid-gap: 2em;
-    grid-template-rows: 0.1fr 0.3fr 3fr 0.05fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
     background-color: transparent;
     color: #1f2220;
-    width: 80%;
-    height: auto;
+    height: 100px;
     margin: 0 10%;
-    justify-content: center;
-    text-align: center;
-    padding-top: 45px;
+    align-self: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .header {
     grid-column: 1/2;
-    grid-row: 1/3;
-    justify-content: center;
-    align-self: center;
-    padding: 5% 0 0 0;
+    height: 100px;
+    align-self: end;
 }
 
+.logo {
+    align-self: end;
+}
+
+.navbar {
+    grid-column: 2/3;
+    align-self: end;
+}
 
 .navbar-pages {
-    grid-column: 2/4;
-    grid-row: 2/3;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     font-family: 'oswald';
     font-color: #F0F5BB;
-        list-style: none;
+    list-style: none;
 }
 
 .pagebutt {
-    margin: 0 30px;
-    padding-bottom: 10px;
+    margin: 0 0 0 50px;
 }
 
-.portfolio {
-    grid-column: 1/4;
-    grid-row: 3/4;
+.portfolio-wrapper {
     display: grid;
     grid-row-gap: 5em;
     grid-template-columns: 1fr 1fr 1fr;
@@ -84,39 +86,49 @@ a:hover {
     justify-items: center;
 }
 
+.resume {
+    padding-top: 100px;
+    text-align: center;
+    justify-content: center;
+}
+
+.resume-preview img {
+    width: 70%;
+}
+
+.about-me {
+    grid-column: 1/4;
+    grid-row: 3/4;
+}
+
 .footer {
-	grid-column: 1/4;
-	grid-row: 4/5;
-	display: grid;
-	grid-template-rows: 1fr 1fr;
-	grid-template-columns: 1fr 1fr 1fr;
-	justify-content: center;
-	align-items: center;
-	height: 100px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 .footer-bar {
-	grid-row: 1/2;
-	grid-column: 2/3;
-	display: flex;
-	align-self: center;
-	justify-content: center;
-	
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    align-self: center;
+    justify-content: center;
 }
 
 .fa-stack {
-	justify-content: center;
+    justify-content: center;
 }
 
 .copyright {
-	grid-row: 2/3;
-	grid-column: 2/3;
-	justify-content: center;
-}
-
-.resumeview {
-    grid-column: 1/4;
-    grid-row: 3/4;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    justify-content: center;
+    text-align: center;
 }
 
 .worksamples {
@@ -135,36 +147,86 @@ a:hover {
 }
 
 .work-preview-p {
-	position: relative;
+    position: relative;
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
 .work-description {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  transform: translate(-10%, -10%);
-  -ms-transform: translate(-10%, -10%);
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: translate(-10%, -10%);
+    -ms-transform: translate(-10%, -10%);
     text-align: justify;
     text-justify: inter-word;
     margin: 5% 5%;
-	color: white;
+    color: white;
 }
+
 .worksamples:hover {
-  background: #754F45
+    background: #754F45
 }
-.worksamples:hover .work-preview-p, 
-.worksamples:hover .work-preview-l{
-  background: #754F45;
-  opacity: 0.1;
+
+.worksamples:hover .work-preview-p,
+.worksamples:hover .work-preview-l {
+    background: #754F45;
+    opacity: 0.1;
 }
 
 .worksamples:hover .work-description {
-  opacity: 1;
+    opacity: 1;
+    z-index: 2;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 
@@ -183,8 +245,13 @@ h2 {
 }
 
 h3 {
-	font-family: "oswald";
-	font-size: 20px;
+    font-family: "oswald";
+    font-size: 20px;
+}
+
+h4 {
+    font-family: "karla";
+    font-size: 20px;
 }
 
 .fa-inverse {
